@@ -1,24 +1,72 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+Sweater Weather is a 5-day, solo project during module three, of Turing School's Back-End Engineering Program.
 
-Things you may want to cover:
+Our challenge was to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
 
-* Ruby version
+Thus, Sweater Weather was born. Sweater Weather is a web application designed to consume and produce API's. The application utilizes the languages of Ruby, the web framework of Rails. For API's, Sweater Weather consumes the Dark Sky API, for weather data, the Google Maps API, for geocoding, and the Flickr API for images.
 
-* System dependencies
+#### [**_View Sweater Weather in Production_**](https://weather-for-sweaters.herokuapp.com/) </br>
 
-* Configuration
+<img width="1389" alt="Wireframe of Sweater Weather" src="http://backend.turing.io/module3/projects/images/sweater_weather/root.png">
 
-* Database creation
+## Getting Started
 
-* Database initialization
+To run Sweater Weather on your local machine, navigate to the directory in which you would like the project to be located in, then execute the following commands:
 
-* How to run the test suite
+```
+$ git clone git@github.com:Mackenzie-Frey/sweater_weather.git
+$ cd sweater_weather
+$ bundle
+$ rails g rspec:install
+$ bundle exec figaro install
+```
+#### Setup your environment variables:
 
-* Services (job queues, cache servers, search engines, etc.)
+##### Sign Up on the following API's:
+* [Dark Sky](https://darksky.net/dev)
+* [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
-* Deployment instructions
+Add the following code snippet to your `config/application.yml` file. Make sure to insert the key/secret without the alligator clips ( < > ).
+```
+dark_sky_key: <insert>
+google_maps_key: <insert>
+```
 
-* ...
+## Running Tests
+
+To run the test suite, execute the following command: `rspec`.
+
+## Deployment
+
+To view Sweater Weather in development, execute the following command from the project directory: `rails s`. In a browser, visit `localhost:3000`, to view the application.
+
+To view the application in production, from the project directory, execute the following commands:
+```
+$ createuser -s -r sweater_weather
+$ RAILS_ENV=production rake db:{drop,create,migrate}
+$ rake assets:precompile
+$ rails s -e production
+```
+
+## Tools
+* Figaro
+* Faraday
+* Dark Sky API
+* Google Maps API
+* GitHub Projects
+* RSpec
+* Capybara
+* Pry
+* SimpleCov
+* Postman
+* Webmock
+* VCR
+* Fast JSON API
+
+## Rubric/Project Description
+#### [**_View the Project Description and Rubric_**]http://backend.turing.io/module3/projects/sweater_weather
+
+## Author
+[Mackenzie Frey](https://github.com/Mackenzie-Frey)
