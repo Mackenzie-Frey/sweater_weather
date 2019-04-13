@@ -9,34 +9,41 @@ context '/api/v1/forecast?location=denver,co' do
 
     expect(response).to be_successful
 
-    expect(result[:forecast][:currently]).to have_key(:time)
-    expect(result[:forecast][:currently]).to have_key(:summary)
-    expect(result[:forecast][:currently]).to have_key(:icon)
-    expect(result[:forecast][:currently]).to have_key(:temperature)
-    expect(result[:forecast][:currently]).to have_key(:humidity)
-    expect(result[:forecast][:currently]).to have_key(:visibility)
-    expect(result[:forecast][:currently]).to have_key(:uvIndex)
-    expect(result[:forecast][:currently]).to have_key(:apparentTemperature)
 
-    expect(result[:forecast][:hourly]).to have_key(:summary)
-    expect(result[:forecast][:hourly][:data][0]).to have_key(:time)
-    expect(result[:forecast][:hourly][:data][0]).to have_key(:summary)
-    expect(result[:forecast][:hourly][:data][0]).to have_key(:icon)
-    expect(result[:forecast][:hourly][:data][0]).to have_key(:precipProbability)
-    expect(result[:forecast][:hourly][:data][0]).to have_key(:temperature)
-    expect(result[:forecast][:hourly][:data][0]).to have_key(:apparentTemperature)
-    expect(result[:forecast][:hourly][:data][0]).to have_key(:humidity)
+    current_weather = result[:data][:attributes]
+
+    expect(current_weather).to have_key(:current_time)
+    expect(current_weather).to have_key(:current_summary)
+    expect(current_weather).to have_key(:current_icon)
+    expect(current_weather).to have_key(:current_temperature)
+    expect(current_weather).to have_key(:current_humidity)
+    expect(current_weather).to have_key(:current_visibility)
+    expect(current_weather).to have_key(:current_uv_index)
+    expect(current_weather).to have_key(:current_apparant_temperature)
 
 
-    expect(result[:forecast][:daily]).to have_key(:summary)
-    expect(result[:forecast][:daily][:data][0]).to have_key(:time)
-    expect(result[:forecast][:daily][:data][0]).to have_key(:icon)
-    expect(result[:forecast][:daily][:data][0]).to have_key(:precipProbability)
-    expect(result[:forecast][:daily][:data][0]).to have_key(:precipType)
-    expect(result[:forecast][:daily][:data][0]).to have_key(:temperatureHigh)
-    expect(result[:forecast][:daily][:data][0]).to have_key(:temperatureLow)
+    hourly_weather = result[:data][:attributes][:hourly_weather]
 
-    #expect one thing to not equal another
+    expect(hourly_weather[0]).to have_key(:time)
+    expect(hourly_weather[0]).to have_key(:summary)
+    expect(hourly_weather[0]).to have_key(:icon)
+    expect(hourly_weather[0]).to have_key(:precipProbability)
+    expect(hourly_weather[0]).to have_key(:temperature)
+    expect(hourly_weather[0]).to have_key(:apparentTemperature)
+    expect(hourly_weather[0]).to have_key(:humidity)
+    expect(hourly_weather[0]).to_not eq(hourly_weather[3])
 
+
+    expect(result[:data][:attributes]).to have_key(:daily_summary)
+
+    daily_weather = result[:data][:attributes][:daily_weather]
+
+    expect(daily_weather[0]).to have_key(:time)
+    expect(daily_weather[0]).to have_key(:icon)
+    expect(daily_weather[0]).to have_key(:precipProbability)
+    expect(daily_weather[0]).to have_key(:precipType)
+    expect(daily_weather[0]).to have_key(:temperatureHigh)
+    expect(daily_weather[0]).to have_key(:temperatureLow)
+    expect(daily_weather[0]).to_not eq(daily_weather[3])
   end
 end
