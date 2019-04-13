@@ -44,7 +44,7 @@ class Forecast
     current_weather[:apparentTemperature]
   end
 
-  def houly_summary
+  def hourly_summary
     @forecast_data[:hourly][:summary]
   end
 

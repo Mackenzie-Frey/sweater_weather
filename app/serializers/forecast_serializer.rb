@@ -10,7 +10,7 @@ class ForecastSerializer
               :current_visibility,
               :current_uv_index,
               :current_apparant_temperature,
-              :houly_summary,
+              :hourly_summary,
               :hourly_weather,
               # :hourly_time,
               # :hourly_summary,
