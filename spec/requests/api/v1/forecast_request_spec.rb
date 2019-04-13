@@ -9,6 +9,7 @@ context '/api/v1/forecast?location=denver,co' do
 
     result = JSON.parse(response.body)
 
+    expect(response).to be_successful
     expect(result).to eq(expected_data)
   end
 end

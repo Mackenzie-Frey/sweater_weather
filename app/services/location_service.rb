@@ -1,12 +1,9 @@
 class LocationService
+  attr_reader :lat,
+              :long
+
   def initialize(location)
     @location = location
-  end
-
-  def lat
-  end
-
-  def long
   end
 
   def location
@@ -14,9 +11,17 @@ class LocationService
     parse(response)
   end
 
-  def parse
-    binding.pry
+  def parse(response)
+    result = JSON.parse(response.body, symbolize_names: true)
+    # stop here
+    coordinates(result)
+    result
+  end
 
+  def coordinates(result)
+    coords = result[:results][0][:geometry][:location]
+    @lat = coords[:lat]
+    @long = coords[:lng]
   end
 
   def conn
