@@ -1,7 +1,7 @@
 class Api::V1::ForecastController < ApplicationController
   def show
-    forecast = ForecastFacade.new(look_up_params).forecast
-    render json: ForecastSerializer.new(forecast)
+    forecast_data = ForecastFacade.new(look_up_params).forecast
+    render json: ForecastSerializer.new(Forecast.new(forecast_data))
   end
 
   private
