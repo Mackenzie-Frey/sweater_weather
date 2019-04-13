@@ -3,7 +3,7 @@ class BackgroundService
     @location = location
   end
 
-  def url
+  def images
     Unsplash::Photo.search(sanitize_location_params)[0]
   end
 
