@@ -1,5 +1,30 @@
 class ForecastSerializer
-  def initialize(forecast)
-    @forecast = forecast
-  end
+  include FastJsonapi::ObjectSerializer
+  attributes  :id,
+              # :current_weather,
+              :current_time,
+              :current_summary,
+              :current_icon,
+              :current_temperature,
+              :current_humidity,
+              :current_visibility,
+              :current_uv_index,
+              :current_apparant_temperature,
+              :houly_summary,
+              :hourly_weather,
+              # :hourly_time,
+              # :hourly_summary,
+              # :hourly_icon,
+              # :hourly_precip_prob,
+              # :hourly_temp,
+              # :hourly_apparant_temp,
+              # :hourly_humidity,
+              :daily_summary,
+              :daily_weather
+              # :daily_time,
+              # :daily_icon,
+              # :daily_precip_prob,
+              # :daily_precip_typ,
+              # :daily_temp_high,
+              # :daily_temp_low
 end
