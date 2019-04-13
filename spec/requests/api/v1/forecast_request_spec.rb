@@ -4,7 +4,7 @@ context '/api/v1/forecast?location=denver,co' do
   it 'outputs weather data for a specific location' do
 
     get '/api/v1/forecast?location=denver,co'
-binding.pry
+
     result = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
