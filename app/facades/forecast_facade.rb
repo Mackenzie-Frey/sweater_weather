@@ -4,7 +4,7 @@ class ForecastFacade
   end
 
   def forecast
-    ForecastService.new(latitude, longitude)
+    ForecastService.new(latitude, longitude).forecast
   end
 
   def latitude
