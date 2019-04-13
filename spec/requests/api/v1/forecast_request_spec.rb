@@ -4,11 +4,11 @@ context '/api/v1/forecast?location=denver,co' do
   it 'outputs weather data for a specific location' do
 
     get '/api/v1/forecast?location=denver,co'
-
+binding.pry
     result = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    
+
     expect(result[:forecast][:currently]).to have_key(:time)
     expect(result[:forecast][:currently]).to have_key(:summary)
     expect(result[:forecast][:currently]).to have_key(:icon)
@@ -35,5 +35,8 @@ context '/api/v1/forecast?location=denver,co' do
     expect(result[:forecast][:daily][:data][0]).to have_key(:precipType)
     expect(result[:forecast][:daily][:data][0]).to have_key(:temperatureHigh)
     expect(result[:forecast][:daily][:data][0]).to have_key(:temperatureLow)
+
+    #expect one thing to not equal another
+
   end
 end
