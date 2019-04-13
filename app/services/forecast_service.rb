@@ -5,7 +5,12 @@ class ForecastService
   end
 
   def forecast
-    conn.get("/forecast/#{ENV['dark_sky_key']}/#{@lat},#{@long}")
+    response = conn.get("/forecast/#{ENV['dark_sky_key']}/#{@lat},#{@long}")
+    parse(response)
+  end
+
+  def parse(response)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def conn
