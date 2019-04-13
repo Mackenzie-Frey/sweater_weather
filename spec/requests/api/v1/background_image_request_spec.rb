@@ -11,6 +11,6 @@ context 'Background Image Request' do
     expect(response).to be_successful
     expect(result[:data][:id]).to be_a(String)
     expect(result[:data][:attributes][:url]).to be_a(String)
-    expect(result[:data][:attributes][:url]).to be_eq(photo)
+    expect(result[:data][:attributes][:url]).to eq(photo)
   end
 end
