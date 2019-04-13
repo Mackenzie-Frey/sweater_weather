@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 context 'Background Image Request' do
-  it 'returns an image url' do
+  it 'returns a JSON object with the image url' do
     photo = 'https://images.unsplash.com/photo-1546156929-a4c0ac411f47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjY2NTE1fQ'
 
     get '/api/v1/backgrounds?location=denver,co'
