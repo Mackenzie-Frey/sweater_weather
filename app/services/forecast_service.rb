@@ -1,5 +1,5 @@
 class ForecastService
-  def initialize(location_params)
-    @params = params
+  def initialize(location)
+    @location = location
   end
 end
