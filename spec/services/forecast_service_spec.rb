@@ -13,8 +13,9 @@ context 'Forescast Service' do
   end
 
   it 'returns weather data when given a latitude and longitude' do
-    forecast = ForecastService.new(@lat, @long)
-
+    forecast = ForecastService.new(@lat, @long).forecast
+binding.pry
     expect(forecast).to be_a(Hash)
+
   end
 end
