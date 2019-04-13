@@ -4,7 +4,7 @@ class BackgroundService
   end
 
   def url
-    Unsplash::Photo.search(sanitize_location_params)[0][:urls][:raw]
+    Unsplash::Photo.search(sanitize_location_params)[0]
   end
 
   def sanitize_location_params
