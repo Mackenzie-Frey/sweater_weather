@@ -1,13 +1,20 @@
 require 'rails_helper'
 
 context 'Forescast Service' do
-    it 'exists' do
-      forecast = ForecastService.new(params)
-      expect(forecast).to be_a(ForecastService)
-    end
+  before :each do
+    @lat = 39.7392358
+    @long = -104.990251
+  end
 
-  it 'returns weather data when given a city' do
-    ForecastService.new('denver,co')
-    expect()
+  it 'exists' do
+    forecast = ForecastService.new(@lat, @long)
+
+    expect(forecast).to be_a(ForecastService)
+  end
+
+  it 'returns weather data when given a latitude and longitude' do
+    forecast = ForecastService.new(@lat, @long)
+
+    expect(forecast).to be_a(Hash)
   end
 end
