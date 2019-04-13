@@ -16,15 +16,17 @@ context 'Forecast' do
 
   context 'current' do
     it '#current_weather' do
-      expect(@forecast.current_weather).to be_a(Hash)
-      expect(@forecast.current_weather).to have_key(:time)
-      expect(@forecast.current_weather).to have_key(:summary)
-      expect(@forecast.current_weather).to have_key(:icon)
-      expect(@forecast.current_weather).to have_key(:temperature)
-      expect(@forecast.current_weather).to have_key(:humidity)
-      expect(@forecast.current_weather).to have_key(:visibility)
-      expect(@forecast.current_weather).to have_key(:uvIndex)
-      expect(@forecast.current_weather).to have_key(:apparentTemperature)
+      current_weather = @forecast.current_weather
+
+      expect(current_weather).to be_a(Hash)
+      expect(current_weather).to have_key(:time)
+      expect(current_weather).to have_key(:summary)
+      expect(current_weather).to have_key(:icon)
+      expect(current_weather).to have_key(:temperature)
+      expect(current_weather).to have_key(:humidity)
+      expect(current_weather).to have_key(:visibility)
+      expect(current_weather).to have_key(:uvIndex)
+      expect(current_weather).to have_key(:apparentTemperature)
     end
 
     it '#current_time' do
@@ -66,14 +68,16 @@ context 'Forecast' do
     end
 
     it '#hourly_weather' do
-      expect(@forecast.hourly_weather).to be_a(Array)
-      expect(@forecast.hourly_weather[0]).to have_key(:time)
-      expect(@forecast.hourly_weather[0]).to have_key(:summary)
-      expect(@forecast.hourly_weather[0]).to have_key(:icon)
-      expect(@forecast.hourly_weather[0]).to have_key(:precipProbability)
-      expect(@forecast.hourly_weather[0]).to have_key(:temperature)
-      expect(@forecast.hourly_weather[0]).to have_key(:apparentTemperature)
-      expect(@forecast.hourly_weather[0]).to have_key(:humidity)
+      hourly_weather = @forecast.hourly_weather
+
+      expect(hourly_weather).to be_a(Array)
+      expect(hourly_weather[0]).to have_key(:time)
+      expect(hourly_weather[0]).to have_key(:summary)
+      expect(hourly_weather[0]).to have_key(:icon)
+      expect(hourly_weather[0]).to have_key(:precipProbability)
+      expect(hourly_weather[0]).to have_key(:temperature)
+      expect(hourly_weather[0]).to have_key(:apparentTemperature)
+      expect(hourly_weather[0]).to have_key(:humidity)
     end
   end
 
@@ -83,14 +87,16 @@ context 'Forecast' do
     end
 
     it '#daily_weather' do
-      expect(@forecast.daily_weather).to be_a(Array)
-      expect(@forecast.daily_weather[0]).to be_a(Hash)
-      expect(@forecast.daily_weather[0]).to have_key(:time)
-      expect(@forecast.daily_weather[0]).to have_key(:icon)
-      expect(@forecast.daily_weather[0]).to have_key(:precipProbability)
-      expect(@forecast.daily_weather[0]).to have_key(:precipType)
-      expect(@forecast.daily_weather[0]).to have_key(:temperatureHigh)
-      expect(@forecast.daily_weather[0]).to have_key(:temperatureLow)
+      daily_weather = @forecast.daily_weather
+
+      expect(daily_weather).to be_a(Array)
+      expect(daily_weather[0]).to be_a(Hash)
+      expect(daily_weather[0]).to have_key(:time)
+      expect(daily_weather[0]).to have_key(:icon)
+      expect(daily_weather[0]).to have_key(:precipProbability)
+      expect(daily_weather[0]).to have_key(:precipType)
+      expect(daily_weather[0]).to have_key(:temperatureHigh)
+      expect(daily_weather[0]).to have_key(:temperatureLow)
     end
   end
 end
