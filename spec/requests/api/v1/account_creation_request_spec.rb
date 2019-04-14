@@ -3,10 +3,10 @@ require 'rails_helper'
 describe 'Users API' do
   it 'recieves user info and returns an api key' do
 
-    { "email": "whatever@example.com",
+    visitor_info = { "email": "whatever@example.com",
     "password": "password", "password_confirmation": "password" }
 
-    post '/api/v1/users'
+    post '/api/v1/users', params: visitor_info
 
     result = JSON.parse(response.body)
 
