@@ -1,4 +1,5 @@
 class BackgroundService
+  include Service
   def initialize(location)
     @location = location
   end
@@ -7,10 +8,6 @@ class BackgroundService
     # Unsplash::Photo.search(sanitize_location_params)[0]
     response = conn.get('/search/photos')
     parse(response)
-  end
-
-  def parse(response)
-    JSON.parse(response.body, symbolize_names: true)
   end
 
   def conn
