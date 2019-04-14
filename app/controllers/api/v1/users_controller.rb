@@ -1,11 +1,9 @@
 class Api::V1::UsersController < ApplicationController
   def create
-    api_key = SecureRandom.hex(12)
-    #Make an api key object in initalize make key with attr_reader
     user = User.new(email: input_params['email'],
                     password: input_params['password'],
                     password_confirmation: input_params['password_confirmation'],
-                    api_key: api_key)
+                    api_key: ApiKey.new.key)
 
     render_json(user)
   end
