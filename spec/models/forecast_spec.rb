@@ -42,23 +42,23 @@ describe 'Forecast', type: :model do
     end
 
     it '#current_temperature' do
-      expect(@forecast.current_temperature).to be_a(Float)
+      expect(@forecast.current_temperature).to be_a(Float).or(be_a(Integer))
     end
 
     it '#current_humidity' do
-      expect(@forecast.current_humidity).to be_a(Float)
+      expect(@forecast.current_humidity).to be_a(Float).or(be_a(Integer))
     end
 
     it '#current_visibility' do
-      expect(@forecast.current_visibility).to be_a(Float)
+      expect(@forecast.current_visibility).to be_a(Float).or(be_a(Integer))
     end
 
     it '#current_uv_index' do
-      expect(@forecast.current_uv_index).to be_a(Integer)
+      expect(@forecast.current_uv_index).to be_a(Integer).or(be_a(Float))
     end
 
     it '#current_apparant_temperature' do
-      expect(@forecast.current_apparant_temperature).to be_a(Float)
+      expect(@forecast.current_apparant_temperature).to be_a(Float).or(be_a(Integer))
     end
   end
 
@@ -94,7 +94,6 @@ describe 'Forecast', type: :model do
       expect(daily_weather[0]).to have_key(:time)
       expect(daily_weather[0]).to have_key(:icon)
       expect(daily_weather[0]).to have_key(:precipProbability)
-      expect(daily_weather[0]).to have_key(:precipType)
       expect(daily_weather[0]).to have_key(:temperatureHigh)
       expect(daily_weather[0]).to have_key(:temperatureLow)
     end

@@ -40,7 +40,6 @@ describe ForecastService do
     expect(forecast[:daily][:data][0]).to have_key(:time)
     expect(forecast[:daily][:data][0]).to have_key(:icon)
     expect(forecast[:daily][:data][0]).to have_key(:precipProbability)
-    expect(forecast[:daily][:data][0]).to have_key(:precipType)
     expect(forecast[:daily][:data][0]).to have_key(:temperatureHigh)
     expect(forecast[:daily][:data][0]).to have_key(:temperatureLow)
   end

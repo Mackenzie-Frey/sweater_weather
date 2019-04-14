@@ -27,11 +27,15 @@ $ bundle exec figaro install
 ##### Sign Up on the following API's:
 * [Dark Sky](https://darksky.net/dev)
 * [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
+* [Unsplash](https://unsplash.com/developers)
+
 
 Add the following code snippet to your `config/application.yml` file. Make sure to insert the key/secret without the alligator clips ( < > ).
 ```
 dark_sky_key: <insert>
 google_maps_key: <insert>
+unsplash_client_id: <insert>
+unsplash_client_secret: <insert>
 ```
 
 ## Running Tests
@@ -55,6 +59,8 @@ $ rails s -e production
 * Faraday
 * Dark Sky API
 * Google Maps API
+* Unsplash Image API
+* Fast JSON API
 * GitHub Projects
 * RSpec
 * Capybara
@@ -63,7 +69,6 @@ $ rails s -e production
 * Postman
 * Webmock
 * VCR
-* Fast JSON API
 
 ## Rubric/Project Description
 #### [**_View the Project Description and Rubric_**]http://backend.turing.io/module3/projects/sweater_weather

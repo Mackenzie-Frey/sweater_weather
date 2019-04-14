@@ -37,16 +37,21 @@ gem 'faraday'
 gem 'figaro'
 gem 'fast_jsonapi'
 gem 'unsplash'
+gem 'bcrypt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
-  gem 'capybara'
   gem 'pry'
+end
+
+group :test do
+  gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'webmock'
   gem 'vcr'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :development do
