@@ -13,4 +13,13 @@ describe User, type: :model do
     it { should validate_presence_of(:password) }
     it { should validate_presence_of(:api_key) }
   end
+
+  it 'has attributes' do
+    email = 'email'
+    password = 'password123'
+    User.create!( email: email, password: password, password_confirmation: password, api_key: ApiKey.new.key )
+
+    expect(User.last.email).to eq(email)
+    expect(User.last.password_digest).to be_a(String)
+  end
 end
