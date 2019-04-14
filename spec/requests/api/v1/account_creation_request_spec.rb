@@ -16,18 +16,19 @@ describe 'Users API' do
     expect(User.last.api_key).to be_a(String)
     expect(User.last.api_key.length).to eq(24)
 
-    expect(response.code).to eq('200')
+    expect(response.code).to eq('201')
     expect(result).to be_a(Hash)
     expect(result['data']['attributes']['api_key']).to be_a(String)
     expect(result['data']['attributes']['api_key'].length).to eq(24)
   end
 
-  xit 'receives user info & does not create a user if passwords do not match' do
+  it 'receives user info & does not create a user if passwords do not match' do
     visitor_info = { "email": "whatever@example.com",
-    "password": "password", "password_confirmation": "password-doesn't-match" }
+                    "password": "password",
+                    "password_confirmation": "password-not-matching" }
 
     post '/api/v1/users', params: visitor_info
-binding.pry
+
     expect(response.code).to eq('400')
   end
 end
