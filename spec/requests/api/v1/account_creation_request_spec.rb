@@ -16,7 +16,7 @@ describe 'Users API' do
     expect(User.last.api_key).to be_a(String)
     expect(User.last.api_key.length).to eq(24)
 
-    expect(response.code).to eq('201')
+    expect(response.status).to eq(201)
     expect(result).to be_a(Hash)
     expect(result['data']['attributes']['api_key']).to be_a(String)
     expect(result['data']['attributes']['api_key'].length).to eq(24)
@@ -29,6 +29,6 @@ describe 'Users API' do
 
     post '/api/v1/users', params: visitor_info
 
-    expect(response.code).to eq('400')
+    expect(response.status).to eq(400)
   end
 end
