@@ -15,9 +15,9 @@ class Api::V1::UsersController < ApplicationController
 
   def render_json(user)
     if user.save
-      render json: UserSerializer.new(user), status: 200
+      render json: UserSerializer.new(user), status: 201
     else
-      render json: {status: 400, msg: 'Invalid Parameters'}
+      render json: {}, status: 400, msg: 'Invalid Parameters'
     end
   end
 end
