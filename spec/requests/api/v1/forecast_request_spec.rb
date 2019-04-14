@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-context '/api/v1/forecast?location=denver,co' do
+describe 'Forecast API' do
   it 'outputs weather data for a specific location' do
 
     get '/api/v1/forecast?location=denver,co'

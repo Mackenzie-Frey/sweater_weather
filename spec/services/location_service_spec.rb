@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-context 'Location Service' do
+describe LocationService do
   it 'exists' do
     location = LocationService.new('denver,co')
 

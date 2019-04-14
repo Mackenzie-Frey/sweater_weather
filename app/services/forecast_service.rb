@@ -1,4 +1,6 @@
 class ForecastService
+  include Service
+
   def initialize(lat, long)
     @lat = lat
     @long = long
@@ -7,10 +9,6 @@ class ForecastService
   def forecast
     response = conn.get("/forecast/#{ENV['dark_sky_key']}/#{@lat},#{@long}")
     parse(response)
-  end
-
-  def parse(response)
-    JSON.parse(response.body, symbolize_names: true)
   end
 
   def conn

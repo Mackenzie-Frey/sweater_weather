@@ -1,4 +1,5 @@
 class LocationService
+  include Service
 
   def initialize(location)
     @location = location
@@ -7,10 +8,6 @@ class LocationService
   def location
     response = conn.get('/maps/api/geocode/json')
     parse(response)
-  end
-
-  def parse(response)
-    JSON.parse(response.body, symbolize_names: true)
   end
 
   def lat

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-context 'Forescast Service' do
+describe ForecastService do
   before :each do
     @lat = 39.7392358
     @long = -104.990251
