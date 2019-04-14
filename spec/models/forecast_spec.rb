@@ -94,7 +94,6 @@ describe 'Forecast', type: :model do
       expect(daily_weather[0]).to have_key(:time)
       expect(daily_weather[0]).to have_key(:icon)
       expect(daily_weather[0]).to have_key(:precipProbability)
-      expect(daily_weather[0]).to have_key(:precipType)
       expect(daily_weather[0]).to have_key(:temperatureHigh)
       expect(daily_weather[0]).to have_key(:temperatureLow)
     end
