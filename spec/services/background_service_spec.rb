@@ -13,7 +13,8 @@ context 'Background Service' do
     photo = 'https://images.unsplash.com/photo-1546156929-a4c0ac411f47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjY2NTE1fQ'
     background_data = @background.images
 
-    expect(background_data).to be_a(Unsplash::Photo)
-    expect(background_data[:urls][:raw]).to eq(photo)
+    expect(background_data).to be_a(Hash)
+    expect(background_data[:results][0][:id]).to be_a(String)
+    expect(background_data[:results][0][:urls][:raw]).to eq(photo)
   end
 end

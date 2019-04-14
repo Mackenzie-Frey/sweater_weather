@@ -1,6 +1,6 @@
 class Background
   def initialize(background_data)
-    @background_data = background_data
+    @background_data = background_data[:results][0]
   end
 
   def id
