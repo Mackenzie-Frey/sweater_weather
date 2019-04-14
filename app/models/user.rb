@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-  def initialize(email, password, password_confirmation)
-    @email = email
-    @password = password
-    @password_confirmation = password_confirmation
-  end
+  validates :email, presence: true, uniqueness: true
+  validates :password, :api_key, presence: true
+  has_secure_password
 end
