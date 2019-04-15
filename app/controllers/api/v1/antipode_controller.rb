@@ -22,5 +22,3 @@ class Api::V1::AntipodeController < ApplicationController
     params.permit(:loc)
   end
 end
-
-# render json: ForecastSerializer.new(Forecast.new(forecast_data))
