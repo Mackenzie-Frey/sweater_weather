@@ -15,7 +15,8 @@ describe Antipode, type: :model do
     expect(antipode).to be_a(Antipode)
   end
 
-  it 'has attributes' do
-
+  xit 'has attributes' do
+    # test the other methods
+    # also add forecast methods for lat and long and change the id for forecast to use those methods
   end
 end

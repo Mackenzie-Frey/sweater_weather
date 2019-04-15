@@ -5,6 +5,10 @@ class Antipode
     @antipode_forecast = antipode_forecast
   end
 
+  def id
+    "#{@antipode_forecast.current_time}/" + "#{@antipode_forecast.lat}/" + "#{@antipode_forecast.long}"
+  end
+
   def location_name
     @antipode_city_name
   end

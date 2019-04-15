@@ -9,7 +9,7 @@ describe 'Antipode API' do
 
     attributes = result[:data][:attributes]
 
-    expect(response).to be_succesful
+    expect(response).to be_successful
     expect(result[:data][:type]).to eq('antipode')
     expect(attributes).to be_a(Hash)
     expect(attributes).to have_key(:location_name)
