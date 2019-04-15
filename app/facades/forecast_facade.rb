@@ -8,10 +8,10 @@ class ForecastFacade
   end
 
   def latitude
-    LocationService.new(@location).lat
+    LocationService.new(@location, nil, nil).lat
   end
 
   def longitude
-    LocationService.new(@location).long
+    LocationService.new(@location, nil, nil).long
   end
 end

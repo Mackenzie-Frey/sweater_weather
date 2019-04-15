@@ -4,8 +4,8 @@ class AntipodeFacade
   end
 
   def antipode
-    lat = LocationService.new(@look_up_city).lat
-    long = LocationService.new(@look_up_city).long
+    lat = LocationService.new(@look_up_city, nil, nil).lat
+    long = LocationService.new(@look_up_city, nil, nil).long
 
     antipode_lat = AmypodeService.new(lat, long).antipode_lat
     antipode_long = AmypodeService.new(lat, long).antipode_long
@@ -13,7 +13,7 @@ class AntipodeFacade
     forecast_data = ForecastService.new(antipode_lat, antipode_long).forecast
     antipode_forecast = Forecast.new(forecast_data)
 
-    antipode_city_name = ReverseGeocodingService.new(antipode_lat, antipode_long).city
+    antipode_city_name = LocationService.new(nil, antipode_lat, antipode_long).city
 
     Antipode.new(@look_up_city, antipode_city_name, antipode_forecast)
   end
