@@ -17,8 +17,8 @@ describe 'Antipode API' do
     expect(attributes[:forecast]).to have_key(:summary)
     expect(attributes[:forecast]).to have_key(:current_temperature)
 
-    expect(result[:data]).to have_key(:search_location)
-    expect(result[:data][:search_location]).to eq('Hong Kong')
+    expect(attributes).to have_key(:search_location)
+    expect(attributes[:search_location]).to eq('hongkong')
   end
 end
 
