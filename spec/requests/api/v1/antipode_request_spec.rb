@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Antipode API' do
   it "receives the location and outputs that location, the anitpode & the antipode's forecast" do
 
-    get `/api/v1/antipode?loc=hongkong`
+    get '/api/v1/antipode?loc=hongkong'
 
     result = JSON.parse(response.body, symbolize_names: true)
 
