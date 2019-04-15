@@ -4,13 +4,15 @@ class Api::V1::AntipodeController < ApplicationController
     lat = LocationService.new(look_up_city).lat
     long = LocationService.new(look_up_city).long
 
-    antipode = AmypodeService.new(lat, long).antipode
+    antipode_lat = AmypodeService.new(lat, long).antipode_lat
+    antipode_long = AmypodeService.new(lat, long).antipode_long
 
-    forecast_data = ForecastFacade.new(antipode).forecast
+    forecast_data = ForecastService.new(antipode_lat, antipode_long).forecast
+    forecast = Forecast.new(forecast_data)
 
-    # render json: ForecastSerializer.new(Forecast.new(forecast_data))
+    antipode_name = ReverseGeocodingService.new(antipode_lat, antipode_long)
 
-    render json: AntipodeSerializer.new(look_up_city, forecast_data)
+    render json: AntipodeSerializer.new(look_up_city, antipode_name, forecast)
   end
 
   private
@@ -18,3 +20,5 @@ class Api::V1::AntipodeController < ApplicationController
     params.permit(:loc)
   end
 end
+
+# render json: ForecastSerializer.new(Forecast.new(forecast_data))
