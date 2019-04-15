@@ -8,11 +8,11 @@ class Api::V1::AntipodeController < ApplicationController
     antipode_long = AmypodeService.new(lat, long).antipode_long
 
     forecast_data = ForecastService.new(antipode_lat, antipode_long).forecast
-    forecast = Forecast.new(forecast_data)
+    antipode_forecast = Forecast.new(forecast_data)
 
     antipode_city_name = ReverseGeocodingService.new(antipode_lat, antipode_long).city
 
-    antipode = Antipode.new(look_up_city, antipode_city_name, forecast)
+    antipode = Antipode.new(look_up_city, antipode_city_name, antipode_forecast)
 
     render json: AntipodeSerializer.new(antipode)
   end
