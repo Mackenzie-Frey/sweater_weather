@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe LocationService do
+describe AmypodeService do
   before :each do
     @lat = 27
     @long = -82
