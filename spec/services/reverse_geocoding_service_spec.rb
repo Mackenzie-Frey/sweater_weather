@@ -15,6 +15,6 @@ describe ReverseGeocodingService do
   it '#city -> receives a lat and long and returns a city' do
     city = ReverseGeocodingService.new(@lat, @long).city
 
-    expect(city).to eq("Something like La Paz")
+    expect(city).to eq('Jujuy, Argentina')
   end
 end
