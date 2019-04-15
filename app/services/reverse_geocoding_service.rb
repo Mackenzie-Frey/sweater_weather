@@ -6,7 +6,7 @@ class ReverseGeocodingService
     @long = long
   end
 
-# go back and make city object for the parsed response
+# go back and make city object for the parsed response (result)
   def city
     response = conn.get('/maps/api/geocode/json')
     result = parse(response)
@@ -14,7 +14,7 @@ class ReverseGeocodingService
   end
 
   def parse_city(result)
-    result
+    result[:results][1][:formatted_address]
   end
 
   def location_params
