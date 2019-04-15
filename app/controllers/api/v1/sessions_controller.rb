@@ -1,4 +1,4 @@
-class Api::V1::SessionsController < ApplicationController
+class Api::V1::SessionsController < ApiController
   def create
     user = User.find_by(email: login_params['email'])
     authenticate_then_render(user)

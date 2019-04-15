@@ -1,4 +1,4 @@
-class Api::V1::FavoritesController < ApplicationController
+class Api::V1::FavoritesController < ApiController
   def create
     user = User.find_by(api_key: favorite_params[:api_key])
 
