@@ -1,8 +1,8 @@
 class Api::V1::AntipodeController < ApplicationController
   def show
     look_up_city = look_up_params['loc']
-    lat = ReverseGeocodingService.new(look_up_city).lat
-    long = ReverseGeocodingService.new(look_up_city).long
+    lat = LocationService.new(look_up_city).lat
+    long = LocationService.new(look_up_city).long
 
     antipode = AmypodeService.new(lat, long).antipode
 
