@@ -39,5 +39,6 @@ describe 'Favorite Location API' do
   end
 end
 
-# Why is it giving a 401 unauthorized in Postman
-# add to favorites controller ?  skip_before_action :verify_authenticity_token
+# return location and api key in body
+# Make serializer and render action.
+# favoriting locations, send it in the body, not the params
