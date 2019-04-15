@@ -8,7 +8,7 @@ class LocationService
   end
 
   def location
-    response = conn.get("/maps/api/geocode/json?key=#{ENV['google_maps_key']}&address=#{@location}")
+    response = conn.get("/maps/api/geocode/json?address=#{@location}")
     parse(response)
   end
 
@@ -25,7 +25,7 @@ class LocationService
   end
 
   def city
-    response = conn.get("/maps/api/geocode/json?key=#{ENV['google_maps_key']}&latlng=#{location_params}")
+    response = conn.get("/maps/api/geocode/json?latlng=#{location_params}")
     result = parse(response)
     parse_city(result)
   end
