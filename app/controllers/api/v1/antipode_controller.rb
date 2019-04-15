@@ -10,9 +10,9 @@ class Api::V1::AntipodeController < ApplicationController
     forecast_data = ForecastService.new(antipode_lat, antipode_long).forecast
     forecast = Forecast.new(forecast_data)
 
-    antipode_name = ReverseGeocodingService.new(antipode_lat, antipode_long)
+    antipode_city_name = ReverseGeocodingService.new(antipode_lat, antipode_long).city
 
-    render json: AntipodeSerializer.new(look_up_city, antipode_name, forecast)
+    render json: AntipodeSerializer.new(look_up_city, antipode_city_name, forecast)
   end
 
   private
