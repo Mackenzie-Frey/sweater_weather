@@ -12,7 +12,9 @@ class Api::V1::AntipodeController < ApplicationController
 
     antipode_city_name = ReverseGeocodingService.new(antipode_lat, antipode_long).city
 
-    render json: AntipodeSerializer.new(look_up_city, antipode_city_name, forecast)
+    antipode = Antipode.new(look_up_city, antipode_city_name, forecast)
+
+    render json: AntipodeSerializer.new(antipode)
   end
 
   private
