@@ -37,4 +37,16 @@ describe 'Favorite Location API' do
       expect(response.status).to eq(401)
     end
   end
+
+  context 'DELETE requests' do
+    it 'receives a location and valid API key and outputs the city_forecast that was deleted' do
+      body = {"location": "Denver, CO", "api_key": "jgn983hy48thw9begh98h4539h4"}
+
+      delete '/api/v1/favorites', params: body
+
+      expect(response.status).to eq(200)
+    end
+  end
 end
+
+#test for non valid and lack of api key
