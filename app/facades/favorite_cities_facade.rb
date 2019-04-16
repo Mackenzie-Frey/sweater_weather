@@ -27,7 +27,6 @@ class FavoriteCitiesFacade
 
   def serialize(city_forecasts)
     city_forecasts.map do |city_forecast|
-      binding.pry
       FavoriteCitySerializer.new(city_forecast)
     end
   end
