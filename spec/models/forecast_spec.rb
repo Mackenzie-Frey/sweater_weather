@@ -23,8 +23,8 @@ describe 'Forecast', type: :model do
   end
 
   context 'current' do
-    it '#current_weather' do
-      current_weather = @forecast.current_weather
+    it '#currently' do
+      current_weather = @forecast.currently
 
       expect(current_weather).to be_a(Hash)
       expect(current_weather).to have_key(:time)
