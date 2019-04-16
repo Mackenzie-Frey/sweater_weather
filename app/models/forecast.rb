@@ -8,6 +8,14 @@ class Forecast
     "#{current_time}/" + "#{@forecast_data[:latitude]}/" + "#{@forecast_data[:longitude]}"
   end
 
+  def lat
+    @forecast_data[:latitude]
+  end
+
+  def long
+    @forecast_data[:longitude]
+  end
+
   def current_weather
     @forecast_data[:currently]
   end

@@ -14,6 +14,14 @@ describe 'Forecast', type: :model do
     expect(@forecast.id).to be_a(String)
   end
 
+  it '#lat' do
+    expect(@forecast.lat).to eq(39.7392358)
+  end
+
+  it '#long' do
+    expect(@forecast.long).to eq(-104.990251)
+  end
+
   context 'current' do
     it '#current_weather' do
       current_weather = @forecast.current_weather
