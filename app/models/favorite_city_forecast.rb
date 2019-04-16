@@ -1,9 +1,20 @@
 class FavoriteCityForecast
   include CurrentWeather
-  include ForecastId
 
   def initialize(city_forecast)
     @city_forecast = city_forecast
+  end
+
+  def id
+    "#{current_time}/" + "#{lat}/" + "#{long}"
+  end
+
+  def lat
+    @city_forecast[1][:latitude]
+  end
+
+  def long
+    @city_forecast[1][:longitude]
   end
 
   def location
