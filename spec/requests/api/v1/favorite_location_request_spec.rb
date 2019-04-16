@@ -10,29 +10,70 @@ describe 'Favorite Location API' do
     @user2 = User.create!(email: 'different-email', password: @password, password_confirmation: @password, api_key: 'different-key')
   end
 
-  it "receives a location & API key, then saves the location as the user's favorite" do
-    body = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
+  context 'POST requests' do
+    it "receives a location & API key, then saves the location as the user's favorite" do
+      body = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
 
-    post '/api/v1/favorites', params: body
+      post '/api/v1/favorites', params: body
 
-    expect(response.status).to eq(204)
-    expect(@user1.favorite_cities[0].city).to eq(@city)
-    expect(@user2.favorite_cities).to eq([])
+      expect(response.status).to eq(204)
+      expect(@user1.favorite_cities[0].city).to eq(@city)
+      expect(@user2.favorite_cities).to eq([])
+    end
+
+    it "receives a location & an incorrect API key, and does not save the location as a user's favorite" do
+      body = "{ \"location\": \"#{@city}\", \"api_key\": \"incorrect-key\"}"
+
+      post '/api/v1/favorites', params: body
+
+      expect(response.status).to eq(401)
+    end
+
+    it "receives a location, but no API key, and does not save the location as a user's favorite" do
+      body = "{ \"location\": \"#{@city}\"}"
+
+      post '/api/v1/favorites', params: body
+
+      expect(response.status).to eq(401)
+    end
   end
 
-  it "receives a location & an incorrect API key, and does not save the location as a user's favorite" do
-    body = "{ \"location\": \"#{@city}\", \"api_key\": \"incorrect-key\"}"
+  context 'GET requests' do
+    it "receives an api key and returns the weather for the user's favorite cities" do
+      city2 = "Seattle"
 
-    post '/api/v1/favorites', params: body
+      body = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
+      post '/api/v1/favorites', params: body
 
-    expect(response.status).to eq(401)
-  end
+      body2 = "{ \"location\": \"#{city2}\", \"api_key\": \"#{@api_key}\"}"
+      post '/api/v1/favorites', params: body2
 
-  it "receives a location, but no API key, and does not save the location as a user's favorite" do
-    body = "{ \"location\": \"#{@city}\"}"
+      body_with_key = "{ \"api_key\": \"#{@api_key}\"}"
+      get '/api/v1/favorites', params: body_with_key
 
-    post '/api/v1/favorites', params: body
+      result = JSON.parse(response.body, symbolize_names: true)
 
-    expect(response.status).to eq(401)
+#integrate FAST JSON
+      expect(response.status).to eq(200)
+      expect(result[0][:location]).to eq(@city)
+      expect(result[0]).to have_key(:current_weather)
+
+      current_weather = result[:data][:attributes]
+
+      expect(current_weather).to have_key(:current_time)
+      expect(current_weather).to have_key(:current_summary)
+      expect(current_weather).to have_key(:current_icon)
+      expect(current_weather).to have_key(:current_temperature)
+      expect(current_weather).to have_key(:current_humidity)
+      expect(current_weather).to have_key(:current_visibility)
+      expect(current_weather).to have_key(:current_uv_index)
+      expect(current_weather).to have_key(:current_apparant_temperature)
+
+      expect(result[1][:location]).to eq(city2)
+      expect(result[1]).to have_key(:current_weather)
+
+      #copy the above for current weather and do for the index of 1 of result
+
+    end
   end
 end
