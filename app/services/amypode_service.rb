@@ -2,8 +2,10 @@ class AmypodeService
   include Service
 
   def antipode(coordinates)
-    response = conn.get("/api/v1/antipodes?lat=#{coordinates[0]}&long=#{coordinates[1]}")
-    parse(response)
+    Rails.cache.fetch(coordinates.to_s + 'amypodeservice') do
+      response = conn.get("/api/v1/antipodes?lat=#{coordinates[0]}&long=#{coordinates[1]}")
+      parse(response)
+    end
   end
 
   def conn
