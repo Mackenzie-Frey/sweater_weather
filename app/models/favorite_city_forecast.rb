@@ -1,0 +1,28 @@
+class FavoriteCityForecast
+  include CurrentWeather
+  include ForecastId
+
+  def initialize(city_forecast)
+    @city_forecast = city_forecast
+  end
+
+  def location
+    @city_forecast[0]
+  end
+
+  def currently
+    @city_forecast[1][:currently]
+  end
+
+  def current_weather
+    binding.pry
+    { current_time: current_time,
+      current_summary: current_summary,
+      current_icon: current_icon,
+      current_temperature: current_temperature,
+      current_humidity: current_humidity,
+      current_visibility: current_visibility,
+      current_uv_index: current_uv_index,
+      current_apparant_temperature: current_apparant_temperature }
+  end
+end
