@@ -8,6 +8,10 @@ class Api::V1::FavoritesController < ApiController
     end
   end
 
+  def index
+    User.find_by(api_key: json_body[:api_key]).favorite_cities
+  end
+
   private
   def json_body
     JSON.parse(request.raw_post, symbolize_names: true)
