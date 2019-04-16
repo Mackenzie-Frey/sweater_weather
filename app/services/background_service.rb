@@ -5,7 +5,6 @@ class BackgroundService
   end
 
   def images
-    # Unsplash::Photo.search(sanitize_location_params)[0]
     response = conn.get('/search/photos')
     parse(response)
   end
