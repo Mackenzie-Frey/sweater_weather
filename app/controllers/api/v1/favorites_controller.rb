@@ -12,8 +12,8 @@ class Api::V1::FavoritesController < ApiController
     user = User.find_by(api_key: json_body[:api_key])
     if user
       fav_cities_forecasts = FavoriteCitiesFacade.new(extract_city_names(user)).forecasts
-      # how to serialize an array of objects
-      render json: FavoriteCitiesSerializer.new(fav_cities_forecasts)
+      # render json: FavoriteCitiesSerializer.new(fav_cities_forecasts)
+      render json: fav_cities_forecasts, status: 200
     else
       render json: {}, status: 401
     end
