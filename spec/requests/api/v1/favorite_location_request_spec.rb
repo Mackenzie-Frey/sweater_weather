@@ -85,6 +85,3 @@ end
 # how to send a get request with a body in RSpec
 
 # -------------------------------------------------
-
-# Next Step
-# Model test for Favorite Cities model
