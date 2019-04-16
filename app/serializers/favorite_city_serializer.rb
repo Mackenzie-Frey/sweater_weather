@@ -1,4 +1,4 @@
-class FavoriteCitiesSerializer
+class FavoriteCitySerializer
   include FastJsonapi::ObjectSerializer
   attributes  :id,
               :location,
