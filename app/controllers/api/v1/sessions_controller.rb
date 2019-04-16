@@ -14,7 +14,7 @@ class Api::V1::SessionsController < ApiController
       session[:user_id] = user.id
       render json: UserSerializer.new(user)
     else
-      render json: {}, status: 401
+      render_401
     end
   end
 end
