@@ -1,21 +1,9 @@
 class AmypodeService
   include Service
-  def initialize(lat, long)
-    @lat = lat
-    @long = long
-  end
 
-  def antipode
-    response = conn.get("/api/v1/antipodes?lat=#{@lat}&long=#{@long}")
+  def antipode(coordinates)
+    response = conn.get("/api/v1/antipodes?lat=#{coordinates[0]}&long=#{coordinates[1]}")
     parse(response)
-  end
-
-  def antipode_lat
-    antipode[:data][:attributes][:lat]
-  end
-
-  def antipode_long
-    antipode[:data][:attributes][:long]
   end
 
   def conn

@@ -8,21 +8,19 @@ describe LocationService do
   end
 
   it 'exists' do
-    location = LocationService.new(@city, @lat, @long)
+    location = LocationService.new
 
     expect(location).to be_a(LocationService)
   end
 
   it 'when given city it returns a latitude & longtitude' do
-    lat = LocationService.new(@city, nil, nil).lat
-    long = LocationService.new(@city, nil, nil).long
+    coordinates = LocationService.new.location(@city)
 
-    expect(lat).to eq(39.7392358)
-    expect(long).to eq(-104.990251)
+    expect(coordinates).to eq([39.7392358, -104.990251])
   end
 
   it '#city -> receives a lat and long and returns a city' do
-    city = LocationService.new(nil, @lat, @long).city
+    city = LocationService.new.city(@lat, @long)
 
     expect(city).to eq('Jujuy, Argentina')
   end

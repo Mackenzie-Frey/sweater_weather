@@ -7,11 +7,15 @@ class ForecastFacade
     ForecastService.new(latitude, longitude).forecast
   end
 
+  def location
+    LocationService.new.location(@location)
+  end
+
   def latitude
-    LocationService.new(@location, nil, nil).lat
+    location[0]
   end
 
   def longitude
-    LocationService.new(@location, nil, nil).long
+    location[1]
   end
 end
