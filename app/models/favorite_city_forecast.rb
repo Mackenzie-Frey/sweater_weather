@@ -26,7 +26,6 @@ class FavoriteCityForecast
   end
 
   def current_weather
-    binding.pry
     { current_time: current_time,
       current_summary: current_summary,
       current_icon: current_icon,
