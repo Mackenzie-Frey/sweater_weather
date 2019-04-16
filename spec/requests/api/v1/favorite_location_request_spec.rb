@@ -27,6 +27,7 @@ describe 'Favorite Location API' do
       post '/api/v1/favorites', params: body
 
       expect(response.status).to eq(401)
+      expect(@user1.favorite_cities).to eq([])
     end
 
     it "receives a location, but no API key, and does not save the location as a user's favorite" do
@@ -35,18 +36,55 @@ describe 'Favorite Location API' do
       post '/api/v1/favorites', params: body
 
       expect(response.status).to eq(401)
+      expect(@user1.favorite_cities).to eq([])
     end
   end
 
   context 'DELETE requests' do
     it 'receives a location and valid API key and outputs the city_forecast that was deleted' do
-      body = {"location": "Denver, CO", "api_key": "jgn983hy48thw9begh98h4539h4"}
+      body1 = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
+      post '/api/v1/favorites', params: body1
 
-      delete '/api/v1/favorites', params: body
+      body2 = {"location": "Denver, CO", "api_key": "jgn983hy48thw9begh98h4539h4"}.to_json
+      delete '/api/v1/favorites', params: body2
+
+      result = JSON.parse(response.body, symbolize_names: true)
+
+      attributes = result[0][:data][:attributes]
 
       expect(response.status).to eq(200)
+      expect(attributes).to have_key(:id)
+      expect(attributes[:location]).to eq(@city)
+      expect(attributes[:current_weather]).to have_key(:current_time)
+      expect(attributes[:current_weather]).to have_key(:current_summary)
+      expect(attributes[:current_weather]).to have_key(:current_icon)
+      expect(attributes[:current_weather]).to have_key(:current_temperature)
+      expect(attributes[:current_weather]).to have_key(:current_humidity)
+      expect(attributes[:current_weather]).to have_key(:current_visibility)
+      expect(attributes[:current_weather]).to have_key(:current_uv_index)
+      expect(attributes[:current_weather]).to have_key(:current_apparant_temperature)
+    end
+
+    it "receives a location & an incorrect API key, and does not delete the location from a user's favorite" do
+      body1 = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
+      post '/api/v1/favorites', params: body1
+
+      body2 = {"location": "Denver, CO", "api_key": "incorrect-key"}.to_json
+      delete '/api/v1/favorites', params: body2
+
+      expect(response.status).to eq(401)
+      expect(@user1.favorite_cities[0].city).to eq(@city)
+    end
+
+    it "receives a location, but no API key, and does not delete the location from a user's favorite" do
+      body1 = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
+      post '/api/v1/favorites', params: body1
+
+      body2 = {"location": "Denver, CO"}.to_json
+      delete '/api/v1/favorites', params: body2
+
+      expect(response.status).to eq(401)
+      expect(@user1.favorite_cities[0].city).to eq(@city)
     end
   end
 end
-
-#test for non valid and lack of api key
