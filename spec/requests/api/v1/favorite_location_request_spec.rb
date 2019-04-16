@@ -79,8 +79,12 @@ describe 'Favorite Location API' do
   end
 end
 
+# how to serialize an array of objects
+# how to send a get request with a body in RSpec
+
+# More testing (sad path and model)
+# -------------------------------------------------
 # grab from line 24 and 32
 # do all of this but give a bad api key expect 401
 # do all of this but give no api key expect 401
-# delete comments from Forecast (module created)
-# remove all prys
+# Model test for Favorite Cities model
