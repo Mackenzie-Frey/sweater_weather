@@ -73,7 +73,9 @@ describe 'Favorite Location API' do
       expect(result[1][:location]).to eq(city2)
       expect(result[1]).to have_key(:current_weather)
 
-      #copy the above for current weather and do for the index of 1 of result
+
+      # copy the above for current weather and do for the index of 1 of result
+      # grab from line 24 and 32 for sad path testing of bad & no API key.
 
     end
   end
@@ -82,9 +84,7 @@ end
 
 # how to send a get request with a body in RSpec
 
-# More testing (sad path and model)
 # -------------------------------------------------
-# grab from line 24 and 32
-# do all of this but give a bad api key expect 401
-# do all of this but give no api key expect 401
+
+# Next Step
 # Model test for Favorite Cities model
