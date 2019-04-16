@@ -36,6 +36,3 @@ describe 'Favorite Location API' do
     expect(response.status).to eq(401)
   end
 end
-
-# return location and api key in body
-# Make serializer and render action.
