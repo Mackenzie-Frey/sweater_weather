@@ -6,14 +6,6 @@ class AmypodeService
     parse(response)
   end
 
-  def antipode_lat
-    antipode[:data][:attributes][:lat]
-  end
-
-  def antipode_long
-    antipode[:data][:attributes][:long]
-  end
-
   def conn
     Faraday.new(url: 'http://amypode.herokuapp.com') do |faraday|
       faraday.headers['api_key'] = ENV['amypode_key']

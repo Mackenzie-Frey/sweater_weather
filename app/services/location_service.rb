@@ -7,14 +7,6 @@ class LocationService
     [ coordinates[:lat], coordinates[:lng] ]
   end
 
-  def lat
-    coordinates[:lat]
-  end
-
-  def long
-    coordinates[:lng]
-  end
-
   def city(lat, long)
     response = conn.get("/maps/api/geocode/json?latlng=#{location_params(lat,long)}")
     result = parse(response)
