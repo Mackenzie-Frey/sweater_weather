@@ -79,7 +79,7 @@ describe 'Favorite Location API' do
   end
 end
 
-# how to serialize an array of objects
+
 # how to send a get request with a body in RSpec
 
 # More testing (sad path and model)
