@@ -26,14 +26,24 @@ describe FavoriteCityForecast, type: :model do
   end
 
   it '#location' do
-    expect(@fav_city_forecast.location).to eq(@long)
+    expect(@fav_city_forecast.location).to eq(@city)
   end
 
   it '#currently' do
-
+    expect(@fav_city_forecast.currently).to be_a(Hash)
+    expect(@fav_city_forecast.currently).to have_key(:time)
+    expect(@fav_city_forecast.currently).to have_key(:summary)
+    expect(@fav_city_forecast.currently).to have_key(:icon)
+    expect(@fav_city_forecast.currently).to have_key(:precipProbability)
+    expect(@fav_city_forecast.currently).to have_key(:temperature)
+    expect(@fav_city_forecast.currently).to have_key(:apparentTemperature)
+    expect(@fav_city_forecast.currently).to have_key(:humidity)
+    expect(@fav_city_forecast.currently).to have_key(:uvIndex)
+    expect(@fav_city_forecast.currently).to have_key(:visibility)
   end
 
   it '#current_weather' do
 
+    expect(@fav_city_forecast.current_weather).to be_a(Hash)
   end
 end
