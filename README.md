@@ -64,6 +64,7 @@ POST /api/v1/users, params: { email: example@email.com, password: password123, p
 POST /api/v1/sessions, params: { email: example@email.com, password: password123 }
 POST /api/v1/favorites, body: {"location": "Denver, CO", "api_key": "jgn983hy48thw9begh98h4539h4"}
 GET /api/v1/favorites, body: {"api_key": "jgn983hy48thw9begh98h4539h4"}
+DELETE /api/v1/favorites, body: {"location": "Denver, CO", "api_key": "jgn983hy48thw9begh98h4539h4"}
 ```
 
 ## Tools

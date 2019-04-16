@@ -14,8 +14,8 @@ class FavoriteCitiesFacade
   private
   def coordinate_collection
     @cities.map do |city|
-      [ LocationService.new(city, nil, nil).coordinates[:lat],
-      LocationService.new(city, nil, nil).coordinates[:lng] ]
+      [ LocationService.new.location(city)[0],
+      LocationService.new.location(city)[1] ]
     end
   end
 
