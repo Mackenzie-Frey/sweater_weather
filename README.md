@@ -36,6 +36,7 @@ dark_sky_key: <insert>
 google_maps_key: <insert>
 unsplash_client_id: <insert>
 unsplash_client_secret: <insert>
+amypode_key: oscar_the_grouch
 ```
 
 ## Running Tests
@@ -53,6 +54,9 @@ $ RAILS_ENV=production rake db:{drop,create,migrate}
 $ rake assets:precompile
 $ rails s -e production
 ```
+
+# Change others to put it in the body
+`GET /api/v1/favorites, body: "{\"api_key\": \"jgn983hy48thw9begh98h4539h4\"}"`
 
 ## Tools
 * Figaro
