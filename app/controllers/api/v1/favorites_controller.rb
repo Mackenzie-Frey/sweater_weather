@@ -1,21 +1,26 @@
 class Api::V1::FavoritesController < ApiController
   def create
-    user = User.find_by(api_key: json_body[:api_key])
     if user
       FavoriteCity.create(user: user, city: json_body[:location])
     else
-      render json: {}, status: 401
+      render_401
     end
   end
 
   def index
-    user = User.find_by(api_key: json_body[:api_key])
     if user
       fav_cities_forecasts = FavoriteCitiesFacade.new(extract_city_names(user)).forecasts
-      # render json: FavoriteCitiesSerializer.new(fav_cities_forecasts)
       render json: fav_cities_forecasts, status: 200
     else
-      render json: {}, status: 401
+      render_401
+    end
+  end
+
+  def destroy
+    if user
+      json_body
+    else
+      render_401
     end
   end
 
@@ -28,5 +33,9 @@ class Api::V1::FavoritesController < ApiController
     user.favorite_cities.map do |fav_city|
       fav_city.city
     end.uniq
+  end
+
+  def user
+    User.find_by(api_key: json_body[:api_key])
   end
 end
