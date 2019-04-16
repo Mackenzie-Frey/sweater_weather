@@ -4,12 +4,9 @@ class FavoriteCitiesFacade
   end
 
   def forecasts
-    binding.pry
     forecasts = coordinate_collection.map do |coordinates|
-      binding.pry
       ForecastService.new(coordinates[0], coordinates[1]).forecast
     end
-    binding.pry
     make_city_forecast_objects(forecasts)
   end
 
@@ -21,9 +18,7 @@ class FavoriteCitiesFacade
   end
 
   def make_city_forecast_objects(forecasts)
-    binding.pry
     @cities.zip(forecasts).each do |city_forecast|
-      binding.pry
       FavoriteCityForecast.new(city_forecast)
     end
   end
