@@ -6,8 +6,9 @@ Rails.application.routes.draw do
       get '/backgrounds', to: 'backgrounds#show'
       post '/users', to: 'users#create'
       post '/sessions', to: 'sessions#create'
-      post '/favorites', to: 'favorites#create'
       get '/antipode', to: 'antipode#show'
+      post '/favorites', to: 'favorites#create'
+      get '/favorites', to: 'favorites#index'
     end
   end
 end

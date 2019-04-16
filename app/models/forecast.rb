@@ -1,11 +1,12 @@
 class Forecast
+  include CurrentWeather
 
   def initialize(forecast_data)
     @forecast_data = forecast_data
   end
 
   def id
-    "#{current_time}/" + "#{@forecast_data[:latitude]}/" + "#{@forecast_data[:longitude]}"
+    "#{current_time}/" + "#{lat}/" + "#{long}"
   end
 
   def lat
@@ -16,40 +17,8 @@ class Forecast
     @forecast_data[:longitude]
   end
 
-  def current_weather
+  def currently
     @forecast_data[:currently]
-  end
-
-  def current_time
-    current_weather[:time]
-  end
-
-  def current_summary
-    current_weather[:summary]
-  end
-
-  def current_icon
-    current_weather[:icon]
-  end
-
-  def current_temperature
-    current_weather[:temperature]
-  end
-
-  def current_humidity
-    current_weather[:humidity]
-  end
-
-  def current_visibility
-    current_weather[:visibility]
-  end
-
-  def current_uv_index
-    current_weather[:uvIndex]
-  end
-
-  def current_apparant_temperature
-    current_weather[:apparentTemperature]
   end
 
   def hourly_summary

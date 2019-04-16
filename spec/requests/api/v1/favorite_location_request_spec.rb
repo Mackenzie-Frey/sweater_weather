@@ -10,29 +10,31 @@ describe 'Favorite Location API' do
     @user2 = User.create!(email: 'different-email', password: @password, password_confirmation: @password, api_key: 'different-key')
   end
 
-  it "receives a location & API key, then saves the location as the user's favorite" do
-    body = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
+  context 'POST requests' do
+    it "receives a location & API key, then saves the location as the user's favorite" do
+      body = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
 
-    post '/api/v1/favorites', params: body
+      post '/api/v1/favorites', params: body
 
-    expect(response.status).to eq(204)
-    expect(@user1.favorite_cities[0].city).to eq(@city)
-    expect(@user2.favorite_cities).to eq([])
-  end
+      expect(response.status).to eq(204)
+      expect(@user1.favorite_cities[0].city).to eq(@city)
+      expect(@user2.favorite_cities).to eq([])
+    end
 
-  it "receives a location & an incorrect API key, and does not save the location as a user's favorite" do
-    body = "{ \"location\": \"#{@city}\", \"api_key\": \"incorrect-key\"}"
+    it "receives a location & an incorrect API key, and does not save the location as a user's favorite" do
+      body = "{ \"location\": \"#{@city}\", \"api_key\": \"incorrect-key\"}"
 
-    post '/api/v1/favorites', params: body
+      post '/api/v1/favorites', params: body
 
-    expect(response.status).to eq(401)
-  end
+      expect(response.status).to eq(401)
+    end
 
-  it "receives a location, but no API key, and does not save the location as a user's favorite" do
-    body = "{ \"location\": \"#{@city}\"}"
+    it "receives a location, but no API key, and does not save the location as a user's favorite" do
+      body = "{ \"location\": \"#{@city}\"}"
 
-    post '/api/v1/favorites', params: body
+      post '/api/v1/favorites', params: body
 
-    expect(response.status).to eq(401)
+      expect(response.status).to eq(401)
+    end
   end
 end

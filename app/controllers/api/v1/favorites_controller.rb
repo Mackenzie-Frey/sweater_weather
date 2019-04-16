@@ -8,8 +8,25 @@ class Api::V1::FavoritesController < ApiController
     end
   end
 
+  def index
+    user = User.find_by(api_key: json_body[:api_key])
+    if user
+      fav_cities_forecasts = FavoriteCitiesFacade.new(extract_city_names(user)).forecasts
+      # render json: FavoriteCitiesSerializer.new(fav_cities_forecasts)
+      render json: fav_cities_forecasts, status: 200
+    else
+      render json: {}, status: 401
+    end
+  end
+
   private
   def json_body
     JSON.parse(request.raw_post, symbolize_names: true)
+  end
+
+  def extract_city_names(user)
+    user.favorite_cities.map do |fav_city|
+      fav_city.city
+    end.uniq
   end
 end
