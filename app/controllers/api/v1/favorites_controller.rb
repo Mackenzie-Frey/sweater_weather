@@ -10,10 +10,9 @@ class Api::V1::FavoritesController < ApiController
 
   def index
     user = User.find_by(api_key: json_body[:api_key])
-    binding.pry
     if user
       fav_cities_forecasts = FavoriteCitiesFacade.new(extract_city_names(user)).forecasts
-      binding.pry
+      # how to serialize an array of objects
       render json: FavoriteCitiesSerializer.new(fav_cities_forecasts)
     else
       render json: {}, status: 401
@@ -26,9 +25,7 @@ class Api::V1::FavoritesController < ApiController
   end
 
   def extract_city_names(user)
-    binding.pry
     user.favorite_cities.map do |fav_city|
-      binding.pry
       fav_city.city
     end.uniq
   end
