@@ -18,7 +18,9 @@ class Api::V1::FavoritesController < ApiController
 
   def destroy
     if user
-      json_body
+      deleted_city = user.favorite_cities.find_by(city: json_body[:location]).destroy!
+      deleted_city_forecast = FavoriteCitiesFacade.new([deleted_city.city]).forecasts
+      render json: deleted_city_forecast, status: 200
     else
       render_401
     end
