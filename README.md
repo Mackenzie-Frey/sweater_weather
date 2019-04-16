@@ -55,8 +55,16 @@ $ rake assets:precompile
 $ rails s -e production
 ```
 
-# Change others to put it in the body
-`GET /api/v1/favorites, body: "{\"api_key\": \"jgn983hy48thw9begh98h4539h4\"}"`
+## Available Endpoints
+```
+GET /api/v1/forecast?location=<location name ie denver,co>
+GET /api/v1/backgrounds?location=<location name>
+POST /api/v1/users, params: { email: example@email.com, password: password123, password_confirmation: password123 }
+POST /api/v1/sessions, params: { email: example@email.com, password: password123 }
+GET /api/v1/antipode?loc=hongkong
+POST /api/v1/favorites, body: {"location": "Denver, CO", "api_key": "jgn983hy48thw9begh98h4539h4"}
+GET /api/v1/favorites, body: {"api_key": "jgn983hy48thw9begh98h4539h4"}
+```
 
 ## Tools
 * Figaro
@@ -71,8 +79,6 @@ $ rails s -e production
 * Pry
 * SimpleCov
 * Postman
-* Webmock
-* VCR
 
 ## Rubric/Project Description
 #### [**_View the Project Description and Rubric_**]http://backend.turing.io/module3/projects/sweater_weather

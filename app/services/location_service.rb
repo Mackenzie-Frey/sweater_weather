@@ -1,31 +1,14 @@
 class LocationService
   include Service
 
-  def initialize(location = nil, lat = nil, long = nil)
-    @location = location
-    @lat = lat
-    @long = long
+  def location(location)
+    response = conn.get("/maps/api/geocode/json?address=#{location}")
+    coordinates = parse(response)[:results][0][:geometry][:location]
+    [ coordinates[:lat], coordinates[:lng] ]
   end
 
-  def location
-    response = conn.get("/maps/api/geocode/json?address=#{@location}")
-    parse(response)
-  end
-
-  def coordinates
-    location[:results][0][:geometry][:location]
-  end
-
-  def lat
-    coordinates[:lat]
-  end
-
-  def long
-    coordinates[:lng]
-  end
-
-  def city
-    response = conn.get("/maps/api/geocode/json?latlng=#{location_params}")
+  def city(lat, long)
+    response = conn.get("/maps/api/geocode/json?latlng=#{location_params(lat,long)}")
     result = parse(response)
     parse_city(result)
   end
@@ -34,8 +17,8 @@ class LocationService
     result[:results][1][:formatted_address]
   end
 
-  def location_params
-    @lat.to_s + ',' + @long.to_s
+  def location_params(lat, long)
+    lat.to_s + ',' + long.to_s
   end
 
   def conn

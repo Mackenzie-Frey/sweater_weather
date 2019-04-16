@@ -7,7 +7,7 @@ describe AmypodeService do
   end
 
   it 'exists' do
-    amypode_service = AmypodeService.new(@lat, @long)
+    amypode_service = AmypodeService.new
 
     expect(amypode_service).to be_a(AmypodeService)
   end
@@ -16,16 +16,8 @@ describe AmypodeService do
   it '#antipode -> receives lat and long and returns the antipode' do
     response = {:data=>{:id=>'1', :type=>'antipode', :attributes=>{:lat=>-27.0, :long=>98.0}}}
 
-    antipode = AmypodeService.new(@lat, @long).antipode
+    antipode = AmypodeService.new.antipode([@lat, @long])
 
     expect(antipode).to eq(response)
-  end
-
-  it '#antipode -> receives lat and long and returns the antipode lat & long' do
-    lat = AmypodeService.new(@lat, @long).antipode_lat
-    long = AmypodeService.new(@lat, @long).antipode_long
-
-    expect(lat).to eq(-27.0)
-    expect(long).to eq(98.0)
   end
 end
