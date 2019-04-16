@@ -1,16 +1,15 @@
 class Api::V1::FavoritesController < ApiController
   def create
-    user = User.find_by(api_key: favorite_params[:api_key])
-
+    user = User.find_by(api_key: json_body[:api_key])
     if user
-      FavoriteCity.create(user: user, city: favorite_params[:location])
+      FavoriteCity.create(user: user, city: json_body[:location])
     else
       render json: {}, status: 401
     end
   end
 
   private
-  def favorite_params
-    params.permit(:location, :api_key)
+  def json_body
+    JSON.parse(request.raw_post, symbolize_names: true)
   end
 end

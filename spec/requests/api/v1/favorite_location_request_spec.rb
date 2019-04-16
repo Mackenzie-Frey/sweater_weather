@@ -11,10 +11,9 @@ describe 'Favorite Location API' do
   end
 
   it "receives a location & API key, then saves the location as the user's favorite" do
-    favorite_params = {"location": @city,
-                        "api_key": @api_key}
+    body = "{ \"location\": \"#{@city}\", \"api_key\": \"#{@api_key}\"}"
 
-    post '/api/v1/favorites', params: favorite_params
+    post '/api/v1/favorites', params: body
 
     expect(response.status).to eq(204)
     expect(@user1.favorite_cities[0].city).to eq(@city)
@@ -22,18 +21,17 @@ describe 'Favorite Location API' do
   end
 
   it "receives a location & an incorrect API key, and does not save the location as a user's favorite" do
-    favorite_params = {"location": @city,
-                        "api_key": "incorrect-key"}
+    body = "{ \"location\": \"#{@city}\", \"api_key\": \"incorrect-key\"}"
 
-    post '/api/v1/favorites', params: favorite_params
+    post '/api/v1/favorites', params: body
 
     expect(response.status).to eq(401)
   end
 
   it "receives a location, but no API key, and does not save the location as a user's favorite" do
-    favorite_params = {"location": @city}
+    body = "{ \"location\": \"#{@city}\"}"
 
-    post '/api/v1/favorites', params: favorite_params
+    post '/api/v1/favorites', params: body
 
     expect(response.status).to eq(401)
   end
@@ -41,4 +39,3 @@ end
 
 # return location and api key in body
 # Make serializer and render action.
-# favoriting locations, send it in the body, not the params
