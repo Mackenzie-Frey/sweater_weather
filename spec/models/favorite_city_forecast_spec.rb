@@ -44,19 +44,18 @@ describe FavoriteCityForecast, type: :model do
     expect(currently).to have_key(:visibility)
   end
 
-  xit '#current_weather' do
-    binding.pry
+  it '#current_weather' do
     current_weather = @fav_city_forecast.current_weather
+    
     expect(current_weather).to be_a(Hash)
     expect(current_weather.keys.count).to eq(8)
-    expect(current_weather).to have_key()
-    {:current_time=>1555428313,
- :current_summary=>"Partly Cloudy",
- :current_icon=>"partly-cloudy-day",
- :current_temperature=>50.27,
- :current_humidity=>0.61,
- :current_visibility=>5.66,
- :current_uv_index=>3,
- :current_apparant_temperature=>50.27}
+    expect(current_weather).to have_key(:current_time)
+    expect(current_weather).to have_key(:current_summary)
+    expect(current_weather).to have_key(:current_icon)
+    expect(current_weather).to have_key(:current_temperature)
+    expect(current_weather).to have_key(:current_humidity)
+    expect(current_weather).to have_key(:current_visibility)
+    expect(current_weather).to have_key(:current_uv_index)
+    expect(current_weather).to have_key(:current_apparant_temperature)
   end
 end
