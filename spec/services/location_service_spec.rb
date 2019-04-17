@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe LocationService do
+describe LocationService, :vcr do
   before :each do
     @city = 'denver,co'
     @lat = -22.3193039

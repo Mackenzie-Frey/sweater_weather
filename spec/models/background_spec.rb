@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Background', type: :model do
+describe 'Background', :vcr, type: :model do
   before :each do
     background_data = BackgroundService.new('denver,co').images
     @background = Background.new(background_data)
