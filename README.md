@@ -3,9 +3,7 @@
 ## Description
 Sweater Weather is a 5-day, solo project during module three, of Turing School's Back-End Engineering Program.
 
-Our challenge was to create a web application from idea to inception. Project requirements include: authentication with a third-party service, consuming an api, and solving a real-world problem.
-
-Thus, Sweater Weather was born. Sweater Weather is a web application designed to consume and produce API's. The application utilizes the languages of Ruby, the web framework of Rails. For API's, Sweater Weather consumes the Dark Sky API, for weather data, the Google Maps API, for geocoding, and the Flickr API for images.
+Sweater Weather is a web application designed to consume and produce API's. The application utilizes the languages of Ruby, the web framework of Rails. For API's, Sweater Weather consumes the Dark Sky API, for weather data, the Google Maps API, for geocoding, and the Flickr API for images.
 
 #### [**_View Sweater Weather in Production_**](https://weather-for-sweaters.herokuapp.com/) </br>
 
