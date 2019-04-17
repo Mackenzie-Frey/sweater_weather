@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Favorite Location API' do
+describe 'Favorite Location API', :vcr do
   before :each do
     @password = 'password123'
     @api_key = "jgn983hy48thw9begh98h4539h4"

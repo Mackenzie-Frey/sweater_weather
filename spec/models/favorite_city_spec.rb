@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe FavoriteCity, type: :model do
+describe FavoriteCity, :vcr, type: :model do
   context 'Validations' do
     it { should validate_presence_of(:user) }
     it { should validate_presence_of(:city) }

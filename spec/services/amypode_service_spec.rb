@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe AmypodeService do
+describe AmypodeService, :vcr do
   before :each do
     @lat = 27
     @long = -82

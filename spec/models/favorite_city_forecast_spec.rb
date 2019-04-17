@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe FavoriteCityForecast, type: :model do
+describe FavoriteCityForecast, :vcr, type: :model do
   before :each do
     @lat = 39.7392358
     @long = -104.990251
@@ -46,7 +46,7 @@ describe FavoriteCityForecast, type: :model do
 
   it '#current_weather' do
     current_weather = @fav_city_forecast.current_weather
-    
+
     expect(current_weather).to be_a(Hash)
     expect(current_weather.keys.count).to eq(8)
     expect(current_weather).to have_key(:current_time)
