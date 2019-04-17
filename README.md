@@ -3,7 +3,7 @@
 ## Description
 Sweater Weather is a 5-day, solo project during module three, of Turing School's Back-End Engineering Program.
 
-Sweater Weather is a web application designed to consume and produce API's. The application utilizes the languages of Ruby, the web framework of Rails. For API's, Sweater Weather consumes the Dark Sky API, for weather data, the Google Maps API, for geocoding, and the Flickr API for images.
+Sweater Weather is a web application designed to consume and produce API's. The application utilizes Ruby on Rails, with a PostgrSQL database, to consume the Dark Sky API for weather, the Google Maps API for geocoding, and the Unsplash API for city images.
 
 #### [**_View Sweater Weather in Production_**](https://weather-for-sweaters.herokuapp.com/) </br>
 
@@ -22,7 +22,7 @@ $ bundle exec figaro install
 ```
 #### Setup your environment variables:
 
-##### Sign Up on the following API's:
+##### Sign Up for the following API's:
 * [Dark Sky](https://darksky.net/dev)
 * [Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
 * [Unsplash](https://unsplash.com/developers)
@@ -43,7 +43,7 @@ To run the test suite, execute the following command: `rspec`.
 
 ## Deployment
 
-To view Sweater Weather in development, execute the following command from the project directory: `rails s`. In a browser, visit `localhost:3000`, to view the application.
+To view Sweater Weather in development, execute the following command from the project directory: `rails s`. To view the application in a web browser, visit `localhost:3000`.
 
 To view the application in production, from the project directory, execute the following commands:
 ```
@@ -66,18 +66,18 @@ DELETE /api/v1/favorites, body: {"location": "Denver, CO", "api_key": "jgn983hy4
 ```
 
 ## Tools
-* Figaro
-* Faraday
+* Fast JSON API
 * Dark Sky API
 * Google Maps API
 * Unsplash Image API
-* Fast JSON API
+* Postman
+* Faraday
+* Figaro
 * GitHub Projects
 * RSpec
 * Capybara
 * Pry
 * SimpleCov
-* Postman
 
 ## Rubric/Project Description
 #### [**_View the Project Description and Rubric_**]http://backend.turing.io/module3/projects/sweater_weather
