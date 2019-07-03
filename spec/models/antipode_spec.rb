@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Antipode, type: :model do
+describe Antipode, :vcr, type: :model do
   before :each do
     antipode_lat = -22.3193039
     antipode_long = -65.8306389

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Forecast', type: :model do
+describe 'Forecast', :vcr, type: :model do
   before :each do
     forecast_data = ForecastFacade.new('denver,co').forecast
     @forecast = Forecast.new(forecast_data)

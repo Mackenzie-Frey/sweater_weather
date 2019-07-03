@@ -15,6 +15,20 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simplecov'
 SimpleCov.start
+
+require 'webmock/rspec'
+require 'vcr'
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data ('dark_sky_key') { ENV['dark_sky_key'] }
+  config.filter_sensitive_data ('google_maps_key') { ENV['google_maps_key'] }
+  config.filter_sensitive_data ('unsplash_client_id') { ENV['unsplash_client_id'] }
+  config.filter_sensitive_data ('unsplash_client_secret') { ENV['unsplash_client_secret'] }
+  config.filter_sensitive_data ('amypode_key') { ENV['amypode_key'] }
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

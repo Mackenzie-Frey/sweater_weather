@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe BackgroundService do
+describe BackgroundService, :vcr do
   before :each do
     @background = BackgroundService.new('denver,co')
   end
